@@ -1,31 +1,55 @@
 # Decision Companion System (DCS)
 
-An explainable decision engine developed as an architectural take-home assignment.
+**Architectural Decision Engine for High-Stakes Selection**
 
-## Objective
-The DCS demonstrates how to decompose complex, subjective decisions (like Cloud Infrastructure selection) into a transparent, weighted mathematical model.
+---
 
-## Core Features
-1.  **Weighted Scoring (SAW)**: Multi-criteria decision making with user-defined weights.
-2.  **Normalization Engine**: Compares "Apples to Oranges" by scaling diverse metrics (Cost, Uptime, Expertise) to a 0.0-1.0 range.
-3.  **Explainability Layer**: Every score comes with a full mathematical breakdown.
-4.  **Sensitivity Analysis**: Identifies how stable a decision is.
+## 🎯 Overview
 
-## Project Structure
-- `src/core/`: The "Brain". Pure math logic (Normalizer, Scorer).
-- `src/models/`: Data schemas using Python `dataclasses`.
-- `src/io/`: Parsers for JSON inputs and CLI presenters.
-- `src/explain/`: Analysis tools for "What-if" scenarios.
+The **Decision Companion System (DCS)** is a professional-grade, explainable decision-making engine. It provides a formal framework to decompose complex, subjective architectural choices into an auditable, weighted mathematical model.
 
-## Quick Start
-1.  Navigate to `e:\DCS`.
-2.  Run the CLI with a sample template:
-    ```bash
-    python src/cli.py templates/cloud_decision.json
-    ```
+Designed with **Senior Architectural Rigor**, DCS removes the "Black Box" of decision-making by providing a transparent "Math Receipt" for every recommendation.
 
-## Responsible AI Usage
-AI is used for:
-- Drafting criteria templates.
-- Summarizing the logic for stakeholders.
-AI is **excluded** from the scoring math to ensure 100% auditability.
+## 🏗️ Core Architecture: The "DCS Pipeline"
+
+DCS is built as a pure functional pipeline to ensure deterministic results and zero side-effects during scoring.
+
+```mermaid
+graph LR
+    A[JSON/YAML Input] --> B[Validator]
+    B --> C[Constraint Filter]
+    C --> D[Normalization Engine]
+    D --> E[Weighted Scorer (SAW)]
+    E --> F[Explainability Trace]
+    F --> G[CLI Report & Analysis]
+```
+
+## ✨ Professional Features
+
+*   **Weighted Criteria (SAW)**: Implements the Simple Additive Weighting (SAW) model for multi-criteria decision making (MCDM).
+*   **Normalization Engine**: Automates "Apples-to-Oranges" comparisons by scaling cost (Minimize) and performance (Maximize) metrics to a uniform 0.0-1.0 interval.
+*   **Explainability Layer**: Generates a detailed breakdown of every calculation (Value -> Normalized -> Weighted Score).
+*   **Hard Constraint Enforcement**: A safety "Kill Switch" that prunes options failing mandatory requirements (e.g., Budget, Compliance).
+*   **Sensitivity Analysis**: Mathematically identifies the "Decision Stability" (the score gap between the winner and runner-up).
+
+## 🚀 Quick Start
+
+Ensure you have **Python 3.10+** installed. No external dependencies are required.
+
+```bash
+# Run the core demonstration (Cloud Infrastructure Selection)
+python src/cli.py templates/cloud_decision.json
+
+# Run the budget violation demo (Hard Constraint Check)
+python src/cli.py templates/budget_violation.json
+```
+
+## 📂 Project Documentation
+
+*   [BUILD_PROCESS.md](./BUILD_PROCESS.md): Technical stack, structure, and engineering philosophy.
+*   [RESEARCH_LOG.md](./RESEARCH_LOG.md): Architectural Decision Records (ADR) and MCDM theory.
+*   [AI_USAGE.md](./AI_USAGE.md): Transparency report on the collaborative role of AI in this project.
+
+---
+**Author**: [Your Name/GitHub Handle]  
+**Architecture**: Senior-Level Modular Decision Engine
