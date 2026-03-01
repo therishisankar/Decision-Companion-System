@@ -1,48 +1,27 @@
-# Build & Development Process
+# How I Built This
 
-The Decision Companion System (DCS) is architected for maximum portability and zero-dependency execution. This document details the engineering process and technical stack.
+I wanted to make sure my code was clean and didn't have a lot of confusing parts. Here is my process:
 
-## Technical Requirements
-- **Runtime**: Python 3.10+ (Standard Library only)
-- **Dependencies**: 0 External dependencies (Zero-bloat architecture).
-- **Interface**: Stateless Command Line Interface (CLI).
+## My Code Pipeline
+1. **Read Data**: Get the JSON file from the user.
+2. **Filter**: Check if anything is way too expensive and remove it.
+3. **Normalize**: Turn all the different numbers into 0 to 1.
+4. **Score**: Multiply by the weights to see who wins.
+5. **Report**: Print a nice table to the screen!
 
-## Architecture: Modular Pipeline
-The system follows a pure functional pipeline to ensure 100% auditability of decision logic:
+## How to run the demos
+I made two templates to show how it works:
+* `cloud_decision.json`: A standard test.
+* `budget_violation.json`: To show what happens when an option is too expensive.
 
-1. **Ingestion**: Validates JSON/YAML structure and ensures schema compliance.
-2. **Filtering**: Executes a "Hard Constraint" pass to prune ineligible options (e.g., Budget/Compliance).
-3. **Normalization**: Maps diverse units ($, %, ms) to a uniform 0.0 - 1.0 interval.
-4. **Weighted Scoring**: Applies Simple Additive Weighting (SAW) to produce the final recommendation.
-5. **Enrichment**: Generates the "Explainability Trace" and Sensitivity Analysis.
-
-## Project Structure
-```text
-DCS/
-├── src/
-│   ├── core/           # Math & Logic (Normalizer, Scorer)
-│   ├── explain/        # Explainability & Sensitivity Logic
-│   ├── io/             # Data Parsing & Reporting
-│   └── models/         # Type-safe Data Contracts
-├── templates/          # Standard decision configurations
-└── tests/              # Automated verification suite
-```
-
-## Running the System
-The system is designed as a portable Python package.
-
-### Standard Execution:
-```powershell
+To run them:
+```bash
+# Set path (on windows)
 $env:PYTHONPATH = "."; python src/cli.py templates/cloud_decision.json
 ```
 
-### Verification (Tests):
-The core logic is verified using standard Python `unittest`.
-```powershell
+## Running Tests
+I wrote some basic tests to make sure my math functions didn't break.
+```bash
 python -m unittest discover tests
 ```
-
-## Engineering Philosophy
-- **Statelessness**: Every decision run is independent and audit-logged in stdout.
-- **Fail-Fast**: Invalid inputs or constraint violations trigger explicit errors rather than "guessed" averages.
-- **Explainability First**: Code is not just about results; it's about $proving$ them. Every calculation is exposed via the `Presenter` layer.
