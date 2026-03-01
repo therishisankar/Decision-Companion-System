@@ -8,7 +8,7 @@ class Scorer:
         self.normalizer = Normalizer()
 
     def score(self) -> DecisionResult:
-        # 1. Filter ineligible based on constraints
+        # Step 1: Get rid of things that are too expensive
         results = []
         eligible_options = []
         
@@ -40,7 +40,7 @@ class Scorer:
                     reason=reason
                 ))
         
-        # 2. Extract stats from ELIGIBLE options (to avoid outliers skewing results)
+        # Step 2: Compare all the options that are left
         stats = self._get_criteria_stats(eligible_options)
         
         for option in eligible_options:
@@ -71,7 +71,7 @@ class Scorer:
                 breakdown=breakdown
             ))
             
-        # 3. Sort and Rank (only eligible ones)
+        # Step 3: Sort them so the winner is at the top
         scored_results = [r for r in results if r.is_eligible]
         scored_results.sort(key=lambda x: x.total_score, reverse=True)
         

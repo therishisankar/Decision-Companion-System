@@ -1,3 +1,6 @@
+from typing import List
+from src.models.decision import DecisionResult, OptionResult
+
 # This class prints a nice report back to the user.
 class Presenter:
     @staticmethod
