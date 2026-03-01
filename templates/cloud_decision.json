@@ -1,0 +1,49 @@
+{
+  "domain": "Cloud Infrastructure for E-Commerce",
+  "criteria": [
+    {
+      "name": "Monthly Cost",
+      "weight": 0.4,
+      "is_cost": true,
+      "description": "Lower is better"
+    },
+    {
+      "name": "Reliability",
+      "weight": 0.35,
+      "is_cost": false,
+      "description": "Uptime percentage"
+    },
+    {
+      "name": "Team Skill",
+      "weight": 0.25,
+      "is_cost": false,
+      "description": "Internal team expertise (1-10)"
+    }
+  ],
+  "options": [
+    {
+      "name": "AWS",
+      "values": {
+        "Monthly Cost": 5000,
+        "Reliability": 99.99,
+        "Team Skill": 9
+      }
+    },
+    {
+      "name": "GCP",
+      "values": {
+        "Monthly Cost": 4500,
+        "Reliability": 99.9,
+        "Team Skill": 7
+      }
+    },
+    {
+      "name": "Azure",
+      "values": {
+        "Monthly Cost": 5500,
+        "Reliability": 99.95,
+        "Team Skill": 8
+      }
+    }
+  ]
+}

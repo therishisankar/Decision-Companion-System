@@ -1,0 +1,34 @@
+{
+    "domain": "Cloud with Hard Budget Limit",
+    "constraints": {
+        "Monthly Cost": 5000
+    },
+    "criteria": [
+        {
+            "name": "Monthly Cost",
+            "weight": 0.5,
+            "is_cost": true
+        },
+        {
+            "name": "Performance",
+            "weight": 0.5,
+            "is_cost": false
+        }
+    ],
+    "options": [
+        {
+            "name": "Super Cloud (Over Budget)",
+            "values": {
+                "Monthly Cost": 15000,
+                "Performance": 100
+            }
+        },
+        {
+            "name": "Standard Cloud",
+            "values": {
+                "Monthly Cost": 4000,
+                "Performance": 80
+            }
+        }
+    ]
+}
